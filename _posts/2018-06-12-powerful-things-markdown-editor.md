@@ -5,100 +5,156 @@ author: sal
 categories: [ Jekyll, tutorial ]
 image: assets/images/16.jpg
 ---
-There are lots of powerful things you can do with the Markdown editor. If you've gotten pretty comfortable with writing in Markdown, then you may enjoy some more advanced tips about the types of things you can do with Markdown!
+{% assign BITS = 8 %}
 
-As with the last post about the editor, you'll want to be actually editing this post as you read it so that you can see all the Markdown code we're using.
-
-
-## Special formatting
-
-As well as bold and italics, you can also use some other special formatting in Markdown when the need arises, for example:
-
-+ ~~strike through~~
-+ ==highlight==
-+ \*escaped characters\*
-
-
-## Writing code blocks
-
-There are two types of code elements which can be inserted in Markdown, the first is inline, and the other is block. Inline code is formatted by wrapping any word or words in back-ticks, `like this`. Larger snippets of code can be displayed across multiple lines using triple back ticks:
-
-```
-.my-link {
-    text-decoration: underline;
-}
-```
-
-#### HTML
-
-```html
-<li class="ml-1 mr-1">
-    <a target="_blank" href="#">
-    <i class="fab fa-twitter"></i>
-    </a>
-</li>
-```
-
-#### CSS
-
-```css
-.highlight .c {
-    color: #999988;
-    font-style: italic; 
-}
-.highlight .err {
-    color: #a61717;
-    background-color: #e3d2d2; 
-}
-```
-
-#### JS
-
-```js
-// alertbar later
-$(document).scroll(function () {
-    var y = $(this).scrollTop();
-    if (y > 280) {
-        $('.alertbar').fadeIn();
-    } else {
-        $('.alertbar').fadeOut();
+<style>
+    td {
+        text-align: center;
+        vertical-align: middle;
     }
-});
-```
+</style>
 
-#### Python
+<table>
+    <thead>
+        <tr class="header" id="table">
+            <th>Plus</th>
+            <th>Binary</th>
+            <th>Octal</th>
+            <th>Hexadecimal</th>
+            <th>Decimal</th>
+            <th>Minus</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><div class="button" id="add1" onclick="add(1)">+1</div></td>
+            <td id="binary">00000000</td>
+            <td id="octal">0</td>
+            <td id="hexadecimal">0</td>
+            <td id="decimal">0</td>
+            <td><div class="button" id="sub1" onclick="add(-1)">-1</div></td>
+        </tr>
+    </tbody>
+</table>
 
-```python
-print("Hello World")
-```
+{% comment %}
+Liquid for loop includes last number, thus the Minus
+{% endcomment %}
+{% assign bits = BITS | minus: 1 %} 
 
-#### Ruby
+<table>
+    <thead>
+        <tr>
+            {% comment %}
+            Build many bits
+            {% endcomment %}
+            {% for i in (0..bits) %}
+            <th><img id="bulb{{ i }}" src="{{site.baseurl}}/images/bulb_off.png" alt="" width="40" height="Auto">
+                <div class="button" id="butt{{ i }}" onclick="javascript:toggleBit({{ i }})">Turn on</div>
+            </th>
+            {% endfor %}
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            {% comment %}
+            Value of bit
+            {% endcomment %}
+            {% for i in (0..bits) %}
+            <td><input type='text' id="digit{{ i }}" Value="0" size="1" readonly></td>
+            {% endfor %}
+        </tr>
+    </tbody>
+</table>
 
-```ruby
-require 'redcarpet'
-markdown = Redcarpet.new("Hello World!")
-puts markdown.to_html
-```
+<script>
+    const BITS = {{ BITS }};
+    const MAX = 2 ** BITS - 1;
+    const MSG_ON = "Turn on";
+    const IMAGE_ON = "{{site.baseurl}}/images/bulb_on.gif";
+    const MSG_OFF = "Turn off";
+    const IMAGE_OFF = "{{site.baseurl}}/images/bulb_off.png"
 
-#### C
-
-```c
-printf("Hello World");
-```
-
-
-
-
-![walking]({{ site.baseurl }}/assets/images/8.jpg)
-
-## Reference lists
-
-The quick brown jumped over the lazy.
-
-Another way to insert links in markdown is using reference lists. You might want to use this style of linking to cite reference material in a Wikipedia-style. All of the links are listed at the end of the document, so you can maintain full separation between content and its source or reference.
-
-## Full HTML
-
-Perhaps the best part of Markdown is that you're never limited to just Markdown. You can write HTML directly in the Markdown editor and it will just work as HTML usually does. No limits! Here's a standard YouTube embed code as an example:
-
-<p><iframe style="width:100%;" height="315" src="https://www.youtube.com/embed/Cniqsc9QfDo?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe></p>
+    // return string with current value of each bit
+    function getBits() {
+        let bits = "";
+        for(let i = 0; i < BITS; i++) {
+            bits = bits + document.getElementById('digit' + i).value;
+        }
+        return bits;
+    }
+    // setter for Document Object Model (DOM) values
+    function setConversions(binary) {
+        document.getElementById('binary').innerHTML = binary;
+        // Octal conversion
+        document.getElementById('octal').innerHTML = parseInt(binary, 2).toString(8);
+        // Hexadecimal conversion
+        document.getElementById('hexadecimal').innerHTML = parseInt(binary, 2).toString(16);
+        // Decimal conversion
+        document.getElementById('decimal').innerHTML = parseInt(binary, 2).toString();
+    }
+    // convert decimal to base 2 using modulo with divide method
+    function decimal_2_base(decimal, base) {
+        let conversion = "";
+        // loop to convert to base
+        do {
+            let digit = decimal % base;           // obtain right most digit
+            conversion = "" + digit + conversion; // what does this do? inserts digit to front of string
+            decimal = ~~(decimal / base);         // what does this do? divides by base what is ~~? force whole number
+        } while (decimal > 0);                    // why while at the end? 0 pads front of binary number
+            // loop to pad with zeros
+            if (base === 2) {                     // only pad for binary conversions
+                for (let i = 0; conversion.length < BITS; i++) {
+                    conversion = "0" + conversion;
+            }
+        }
+        return conversion;
+    }
+    // toggle selected bit and recalculate
+    function toggleBit(i) {
+        //alert("Digit action: " + i );
+        const dig = document.getElementById('digit' + i);
+        const image = document.getElementById('bulb' + i);
+        const butt = document.getElementById('butt' + i);
+        // Change digit and visual
+        if (image.src.match(IMAGE_ON)) {
+            dig.value = 0;
+            image.src = IMAGE_OFF;
+            butt.innerHTML = MSG_ON;
+        } else {
+            dig.value = 1;
+            image.src = IMAGE_ON;
+            butt.innerHTML = MSG_OFF;
+        }
+        // Binary numbers
+        const binary = getBits();
+        setConversions(binary);
+    }
+    // add is positive integer, subtract is negative integer
+    function add(n) {
+        let binary = getBits();
+        // convert to decimal and do math
+        let decimal = parseInt(binary, 2);
+        if (n > 0) {  // PLUS
+            decimal = MAX === decimal ? 0 : decimal += n; // OVERFLOW or PLUS
+        } else  {     // MINUS
+            decimal = 0 === decimal ? MAX : decimal += n; // OVERFLOW or MINUS
+        }
+        // convert the result back to binary
+        binary = decimal_2_base(decimal, 2);
+        // update conversions
+        setConversions(binary);
+        // update bits
+        for (let i = 0; i < binary.length; i++) {
+            let digit = binary.substr(i, 1);
+            document.getElementById('digit' + i).value = digit;
+            if (digit === "1") {
+                document.getElementById('bulb' + i).src = IMAGE_ON;
+                document.getElementById('butt' + i).innerHTML = MSG_OFF;
+            } else {
+                document.getElementById('bulb' + i).src = IMAGE_OFF;
+                document.getElementById('butt' + i).innerHTML = MSG_ON;
+            }
+        }
+    }
+</script>
