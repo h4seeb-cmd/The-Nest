@@ -24,7 +24,7 @@ a:hover {
 pre {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    border: #E3EDF3 1px solid;
+    border: blue 1px solid;
     width: 100%;
     padding: 7px;
     font-family: monospace, sans-serif;
@@ -39,7 +39,7 @@ pre {
 }
 
 .mediumnavigation {
-    background: rgba(255, 255, 255, .97);
+    background: blue;
     box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .15);
     transition: top 0.2s ease-in-out;
 }
@@ -47,6 +47,27 @@ pre {
 .main-content {
     min-height: 300px;
 }
+
+
+body {
+	background: linear-gradient(-45deg, #bbf0e5, rgb(196, 226, 238), rgb(176, 231, 231), rgb(97, 130, 226), rgb(176, 231, 231));
+	background-size: 400% 400%;
+	animation: gradient 8s ease infinite;
+	height: 100vh;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
 
 .site-content {
     min-height: 60vh;
@@ -479,7 +500,7 @@ blockquote {
 }
 
 .graybg {
-    background-color: #fafafa;
+    background-color: blue;
     padding: 40px 0 46px;
     position: relative;
 }
@@ -686,6 +707,7 @@ h4,
 h5,
 h6 {
     font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    text-align: center;
 }
 
 .article-post .h1,
@@ -732,6 +754,7 @@ img {
     color: #999;
     border-top: 1px solid #ddd;
 }
+
 
 .pointerup {
     margin-bottom: -17px;
