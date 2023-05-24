@@ -49,7 +49,7 @@ Liquid for loop includes last number, thus the Minus
             Build many bits
             {% endcomment %}
             {% for i in (0..bits) %}
-            <th><img id="bulb{{ i }}" src="{{site.baseurl}}/images/bulb_off.png" alt="" width="40" height="Auto">
+            <th><img id="bulb{{ i }}" src="{{site.baseurl}}/assets/images/bulb_off.png" alt="" width="40" height="Auto">
                 <div class="button" id="butt{{ i }}" onclick="javascript:toggleBit({{ i }})">Turn on</div>
             </th>
             {% endfor %}
@@ -67,13 +67,30 @@ Liquid for loop includes last number, thus the Minus
     </tbody>
 </table>
 
+
+
+<button id = "submit">Convert</button>
+
+
 <script>
+
+    // header := w.Header()
+    // header.Add("Access-Control-Allow-Origin", "*")
+
+    // if r.Method == "OPTIONS" {
+    //     w.WriteHeader(http.StatusOK)
+    //     return
+    // }   
+
     const BITS = {{ BITS }};
     const MAX = 2 ** BITS - 1;
     const MSG_ON = "Turn on";
-    const IMAGE_ON = "{{site.baseurl}}/images/bulb_on.gif";
+    const IMAGE_ON = "{{site.baseurl}}/assets/images/bulb_on.gif";
     const MSG_OFF = "Turn off";
-    const IMAGE_OFF = "{{site.baseurl}}/images/bulb_off.png"
+    const IMAGE_OFF = "{{site.baseurl}}/assets/images/bulb_off.png";
+    const submit = document.getElementById("submit");
+    submit.addEventListener("click", send);
+
 
     // return string with current value of each bit
     function getBits() {
@@ -130,6 +147,7 @@ Liquid for loop includes last number, thus the Minus
         const binary = getBits();
         setConversions(binary);
     }
+
     // add is positive integer, subtract is negative integer
     function add(n) {
         let binary = getBits();
@@ -157,4 +175,67 @@ Liquid for loop includes last number, thus the Minus
             }
         }
     }
+    
+    //sends number and data to backend
+    function send() {
+    var binary = getBits();
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+        myHeaders.append("Accept", "application/json");
+        var raw = JSON.stringify({
+        "tag": binary
+        });
+        var requestOptions = {
+            method: 'POST',
+            headers: myHeaders,
+            body: raw,
+            redirect: 'follow'
+        };
+        console.log(binary);
+
+    fetch("http://127.0.0.1:8086/api/binary/", requestOptions)
+        .then(response => response.json()) // Parse the response as JSON
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
+
+}
+
+
+
+
+
+
+
+
+    // fetch("http://127.0.0.1:8086/api/y/query", {
+    // method: "POST",
+    // body: JSON.stringify({
+    //     query: binary
+    //     title: "Binary Data",
+    //     completed: false
+    // }),
+    // headers: {
+    //     "Content-type": "application/json; charset=UTF-8"
+    // }
+    // })
+    // .then((response) => response.json())
+    // .then((json) => console.log(json));
+
+    // const xhr = new XMLHttpRequest();
+    // const url = 'http://127.0.0.1:8086/api/y/<string:query>'; 
+
+    // xhr.open('POST', url, true);
+    // xhr.setRequestHeader('Content-Type', 'application/json');
+
+    // xhr.onreadystatechange = function() {
+    //     if (xhr.readyState === 4 && xhr.status === 200) {
+    //       console.log('Data sent successfully');
+    //     // Handle the response from the backend if needed
+    //     }
+    // };
+    // console.log(binary);
+    // const data = JSON.stringify({ binary : binary });
+    // xhr.send(data);
+    
+
 </script>
