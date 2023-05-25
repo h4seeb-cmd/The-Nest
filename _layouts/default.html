@@ -191,6 +191,63 @@ ga('send', 'pageview');
 <!-- Site Title
 ================================================== -->
 
+<!DOCTYPE html>
+<html>
+<head>
+  <title>title</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    .title {
+      font-size: 80px;
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+    .letter {
+      display: inline-block;
+      animation: bubbleAnimation 1s ease-in-out infinite;
+      animation-duration: 5s;
+    }
+
+    @keyframes bubbleAnimation {
+      0%, 100% {
+        transform: translateY(0);
+        color: #FF0000;
+      }
+      50% {
+        transform: translateY(-20px);
+        color: #00FF00;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1 class="title">
+    <span class="letter">T</span>
+    <span class="letter">h</span>
+    <span class="letter">e</span>
+    <span class="letter"> </span>
+    <span class="letter">N</span>
+    <span class="letter">e</span>
+    <span class="letter">s</span>
+    <span class="letter">t</span>
+  </h1>
+
+  <script>
+    const letters = document.querySelectorAll('.letter');
+    let delay = 0;
+
+    letters.forEach(letter => {
+      letter.style.animationDelay = `${delay}s`;
+      delay += 0.1;
+    });
+  </script>
+</body>
+</html>
 
 
   
