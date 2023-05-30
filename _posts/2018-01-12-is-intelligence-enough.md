@@ -167,3 +167,224 @@ image: "https://media.istockphoto.com/id/1076840920/vector/music-background.jpg?
             <span class="letter">T</span>
             <span class="letter">⛅❄</span>
         </h1>
+ <div class="gif-container">
+    <img src="https://i.gifer.com/NEtJ.gif" alt="GIF Image" class="img-fluid" style="width: 735px; height: 500px;">
+</div>
+
+
+</div>
+
+<script>
+        const letters = document.querySelectorAll('.letter');
+
+        letters.forEach((letter, index) => {
+            letter.style.animationDelay = `${index * 0.1}s`;
+        });
+</script>
+<head>
+<style>
+.myDiv {
+  border: 5px outset purple;
+  background-color: lightblue;    
+  text-align: center;
+}
+</style>
+</head>
+<body>
+
+
+<div class="myDiv">
+  <h2>Welcome to SkySight. With this feature you can find out the weather conditions of any part of the world! Enter either the zip code or the city name </h2>
+</div>
+
+</body>
+</html
+
+
+
+
+<html lang="en">
+
+<head>
+  <title>Weather Forecast</title>
+  <!-- Add Bootstrap CSS CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+.container {
+      max-width: 600px;
+      margin-top: 50px;
+    }
+.form-container {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+.form-container input {
+      width: 100%;
+      max-width: 300px;
+      border: 1px solid #ced4da;
+      border-radius: 4px;
+      padding: 6px 12px;
+    }
+.btn-purple {
+      width: 100%;
+      max-width: 200px;
+      font-size: 18px;
+      background-color: #800080;
+      color: #fff;
+      border: none;
+    }
+.card {
+      background-color: #ffffff;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+    }
+.table-responsive {
+      border: none;
+    }
+.error-message {
+      color: red;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+/* Updated CSS for the title */
+    .title-container {
+      text-align: center;
+      animation: bounce 1s infinite;
+      font-size: 36px; /* Increased font size for the title */
+    }
+@keyframes bounce {
+      0% {
+        color: blue; /* Start color: blue */
+      }
+      50% {
+        color: purple; /* Middle color: purple */
+      }
+      100% {
+        color: blue; /* End color: blue */
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1 class="title-container mb-4">Weather Forecast</h1>
+
+<div class="form-container">
+      <form id="cityForm">
+        <div class="mb-3">
+          <input type="text" id="cityInput" class="form-control" placeholder="Enter City" required>
+        </div>
+        <button type="submit" class="btn btn-purple">Get Forecast</button>
+      </form>
+    </div>
+
+<div class="form-container">
+      <form id="zipForm">
+        <div class="mb-3">
+          <input type="text" id="zipInput" class="form-control" placeholder="Enter Zip Code" required>
+        </div>
+        <button type="submit" class="btn btn-purple">Get Forecast</button>
+      </form>
+    </div>
+
+<div class="card d-none">
+      <div class="card-body">
+        <h5 class="card-title">Weather Forecast</h5>
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Data</th>
+                <th scope="col">Value</th>
+              </tr>
+            </thead>
+            <tbody id="weatherData">
+              <!-- Table rows for weather forecast will be dynamically added here -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+<div id="errorMessage" class="error-message d-none"></div>
+  </div>
+
+  <!-- Add Bootstrap JS CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+  <script>
+    function getWeatherForecast(event, locationType) {
+      event.preventDefault(); // Prevent form submission
+const locationInput = locationType === 'city' ? document.getElementById("cityInput") : document.getElementById("zipInput");
+      const location = locationInput.value.trim();
+if (location === "") {
+        return; // Do nothing if the input is empty
+      }
+const url = "https://weather-by-api-ninjas.p.rapidapi.com/v1/weather";
+      const queryParam = locationType === 'city' ? "city" : "zip";
+      const querystring = { [queryParam]: location };
+      const headers = {
+        "X-RapidAPI-Key": "9e76af0f32msh97501ce28ffe3b8p1c0da6jsnc3113faae226",
+        "X-RapidAPI-Host": "weather-by-api-ninjas.p.rapidapi.com"
+      };
+fetch(url + "?" + new URLSearchParams(querystring), {
+          headers: headers
+        })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(response.status); // Handle non-200 status codes as errors
+          }
+          return response.json();
+        })
+        .then(data => {
+          displayWeatherForecast(data);
+          clearErrorMessage();
+        })
+        .catch(error => {
+          console.error("Error:", error);
+          displayErrorMessage();
+        });
+    }
+function displayWeatherForecast(data) {
+      const resultCard = document.querySelector(".card");
+      const weatherData = document.getElementById("weatherData");
+// Clear existing table data
+      weatherData.innerHTML = "";
+// Generate table rows with weather data
+      for (const [key, value] of Object.entries(data)) {
+        const row = document.createElement("tr");
+        const keyCell = document.createElement("td");
+        const valueCell = document.createElement("td");
+        keyCell.textContent = key;
+        valueCell.textContent = value;
+        row.appendChild(keyCell);
+        row.appendChild(valueCell);
+        weatherData.appendChild(row);
+      }
+// Show the weather forecast card
+      resultCard.classList.remove("d-none");
+    }
+function displayErrorMessage() {
+      const errorMessage = document.getElementById("errorMessage");
+      errorMessage.textContent = "An error occurred. Please check the location and try again.";
+      errorMessage.classList.remove("d-none");
+    }
+function clearErrorMessage() {
+      const errorMessage = document.getElementById("errorMessage");
+      errorMessage.textContent = "";
+      errorMessage.classList.add("d-none");
+    }
+// Event listeners for form submissions
+    document.getElementById("cityForm").addEventListener("submit", function(event) {
+      getWeatherForecast(event, 'city');
+    });
+document.getElementById("zipForm").addEventListener("submit", function(event) {
+      getWeatherForecast(event, 'zip');
+    });
+  </script>
+</body>
+
+</html>
