@@ -28,4 +28,38 @@ image: "https://media.istockphoto.com/id/1076840920/vector/music-background.jpg?
             90% { background-color: #c1e8ff; }
             100% { background-color: #a4d3ff; }
         }
+.cloud-container {
+            position: relative;
+        }
+.cloud {
+            position: absolute;
+            width: 200px;
+            height: 100px;
+            background-color: #fff;
+            border-radius: 100px;
+            box-shadow: 0px 0px 20px #888888;
+            animation: cloudAnimation 10s linear infinite;
+            z-index: -1; /* Set a lower z-index to keep the clouds in the background */
+        }
+.cloud::after,
+        .cloud::before {
+            content: "";
+            position: absolute;
+            background-color: #fff;
+        }
+.cloud::after {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            top: -30px;
+            left: 50px;
+        }
+.cloud::before {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            top: -50px;
+            right: 50px;
+        }
+
 
