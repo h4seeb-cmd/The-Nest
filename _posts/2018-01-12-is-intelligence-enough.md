@@ -194,7 +194,7 @@ image: "https://media.istockphoto.com/id/1076840920/vector/music-background.jpg?
 
 
 <div class="myDiv">
-  <h2>Welcome to SkySight. With this feature you can find out the weather conditions of any part of the world! Enter either the zip code or the city name </h2>
+  <h2>Welcome to SkySight. With this feature you can find out the weather conditions of any part of the world! Enter either the zip code or the city name and get the data in a blink of an eye. </h2>
 </div>
 
 </body>
