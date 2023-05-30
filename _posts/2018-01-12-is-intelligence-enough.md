@@ -110,5 +110,37 @@ image: "https://media.istockphoto.com/id/1076840920/vector/music-background.jpg?
             display: inline-block;
             animation: bounce 1s infinite alternate, color-change 2s infinite;
         }
+@keyframes bounce {
+            0% {
+                transform: translateY(0);
+            }
 
+            100% {
+                transform: translateY(-10px);
+            }
+        }
+@keyframes color-change {
+            0% {
+                color: red;
+            }
+
+            25% {
+                color: blue;
+            }
+
+            50% {
+                color: green;
+            }
+
+            75% {
+                color: orange;
+            }
+
+            100% {
+                color: purple;
+            }
+        }
+</style>
+</head>
+<body>
 
