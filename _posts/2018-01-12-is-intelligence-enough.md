@@ -144,3 +144,26 @@ image: "https://media.istockphoto.com/id/1076840920/vector/music-background.jpg?
 </head>
 <body>
 
+<div class="cloud-container">
+        <div class="cloud"></div>
+        <div class="cloud"></div>
+        <div class="cloud"></div>
+        <div class="cloud"></div>
+        <div class="cloud"></div>
+        <div class="cloud"></div>
+    </div>
+
+<div class="gif-container">
+        <h1 class="title">
+            <span class="letter">❄⛅</span>
+            <span class="letter">S</span>
+            <span class="letter">K</span>
+            <span class="letter">Y</span>
+            <span class="letter"></span>
+            <span class="letter">S</span>
+            <span class="letter">I</span>
+            <span class="letter">G</span>
+            <span class="letter">H</span>
+            <span class="letter">T</span>
+            <span class="letter">⛅❄</span>
+        </h1>
