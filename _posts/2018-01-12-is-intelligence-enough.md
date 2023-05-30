@@ -61,5 +61,54 @@ image: "https://media.istockphoto.com/id/1076840920/vector/music-background.jpg?
             top: -50px;
             right: 50px;
         }
+@keyframes cloudAnimation {
+            0% {
+                transform: translateX(-200px);
+            }
+            50% {
+                transform: translateX(calc(100% + 200px));
+            }
+            100% {
+                transform: translateX(-200px);
+            }
+        }
+.cloud:nth-child(2) {
+            top: 150px;
+            left: 200px;
+            animation-duration: 15s;
+            animation-direction: reverse;
+        }
+.cloud:nth-child(3) {
+            top: 300px;
+            left: 500px;
+            animation-duration: 12s;
+            animation-direction: reverse;
+        }
+.cloud:nth-child(4) {
+            top: 450px;
+            left: 800px;
+            animation-duration: 10s;
+            animation-direction: normal;
+        }
+.cloud:nth-child(5) {
+            top: 600px;
+            left: 200px;
+            animation-duration: 14s;
+            animation-direction: reverse;
+        }
+.cloud:nth-child(6) {
+            top: 750px;
+            left: 500px;
+            animation-duration: 11s;
+            animation-direction: normal;
+        }
+.title {
+            text-align: center;
+            font-size: 48px;
+        }
+.letter {
+            display: inline-block;
+            animation: bounce 1s infinite alternate, color-change 2s infinite;
+        }
 
 
