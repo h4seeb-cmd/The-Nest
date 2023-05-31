@@ -177,29 +177,39 @@ Liquid for loop includes last number, thus the Minus
     }
     
     //sends number and data to backend
-    function send() {
+function send() {
     var binary = getBits();
         var myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
-        myHeaders.append("Accept", "application/json");
-        var raw = JSON.stringify({
+        const url = "http://127.0.0.1:8086/api/binary/post";
+    const headers = {
+        method: 'GET', // *GET, POST, PUT, DELETE, etc.
+        mode: 'no-cors', // no-cors, *cors, same-origin
+        cache: 'default', // *default, no-cache, reload, force-cache, only-if-cached
+        credentials: 'omit', // include, *same-origin, omit
+        headers: {
+        'Content-Type': 'application/json'
+        // 'Content-Type': 'application/x-www-form-urlencoded',
+        },
+    };
+        // myHeaders.append("Content-Type", "application/json");
+        // myHeaders.append("Accept", "application/json");
+        // myHeaders.append("Origin", "http://127.0.0.1:4000/mediumish-theme-jekyll/powerful-things-markdown-editor/");
+    var raw = JSON.stringify({
         "tag": binary
-        });
-        var requestOptions = {
-            method: 'POST',
-            headers: myHeaders,
-            body: raw,
-            redirect: 'follow'
-        };
-        console.log(binary);
+    });
 
-    fetch("http://127.0.0.1:8086/api/binary/", requestOptions)
-        .then(response => response.json()) // Parse the response as JSON
+    var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
+    };
+
+    fetch(url, requestOptions)
+        .then(response => response.json())
         .then(result => console.log(result))
         .catch(error => console.log('error', error));
-
 }
-
 
 
 
@@ -237,5 +247,32 @@ Liquid for loop includes last number, thus the Minus
     // const data = JSON.stringify({ binary : binary });
     // xhr.send(data);
     
+function send() {
+  var binary = getBits();
+  console.log(binary);
+  const url = "http://127.0.0.1:8086/api/binary/post";
+  const headers = {
+      'Content-Type': 'application/json'
+  };
+
+  var raw = JSON.stringify({
+    "tag": binary
+  });
+
+  var requestOptions = {
+    method: 'POST',
+    headers: headers,
+    body: raw,
+    mode: 'cors', // Set the mode directly in requestOptions
+    redirect: 'follow',
+    cache: 'default',
+    credentials: 'omit'
+  };
+
+  fetch(url, requestOptions)
+    .then(response => response.json())
+    .then(result => console.log(result))
+    .catch(error => console.log('error', error));
+}
 
 </script>
