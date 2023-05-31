@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Powerful things you can do with the Markdown editor"
+# title:  "Powerful things you can do with the Markdown editor"
 author: sal
 categories: [ Jekyll, tutorial ]
 image: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fvideohive.net%2Fitem%2Fabstract-technology-background-binary-data-and-streaming-code-3d-animation%2F35920560&psig=AOvVaw0QDOAxT2v3Fa8nvrAeSuTU&ust=1685588071322000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCLiP4IbHnv8CFQAAAAAdAAAAABAD"

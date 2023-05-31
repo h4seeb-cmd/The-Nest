@@ -1,12 +1,9 @@
 ---
 layout: post
-title:  "External Featured Image"
-author: sal
 categories: [ Jekyll, tutorial, web development ]
-image: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fdribbble.com%2Fshots%2F12694549-Weather-Animated-Icons&psig=AOvVaw2Og5RN--S-_m-vU8BgPmRh&ust=1685588001479000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCODWn-TGnv8CFQAAAAAdAAAAABAD"
+image: ""
 ---
 
-<!DOCTYPE html>
 <html>
 <head>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC">
@@ -142,63 +139,55 @@ image: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fdribbble.com%2Fshots%2
         }
 </style>
 </head>
-<body>
-
-<div class="cloud-container">
-        <div class="cloud"></div>
-        <div class="cloud"></div>
-        <div class="cloud"></div>
-        <div class="cloud"></div>
-        <div class="cloud"></div>
-        <div class="cloud"></div>
-    </div>
-
-<div class="gif-container">
-        <h1 class="title">
-            <span class="letter">❄⛅</span>
-            <span class="letter">S</span>
-            <span class="letter">K</span>
-            <span class="letter">Y</span>
-            <span class="letter"></span>
-            <span class="letter">S</span>
-            <span class="letter">I</span>
-            <span class="letter">G</span>
-            <span class="letter">H</span>
-            <span class="letter">T</span>
-            <span class="letter">⛅❄</span>
-        </h1>
- <div class="gif-container">
-    <img src="https://i.gifer.com/NEtJ.gif" alt="GIF Image" class="img-fluid" style="width: 735px; height: 500px;">
-</div>
-
-
-</div>
-
-<script>
-        const letters = document.querySelectorAll('.letter');
-
-        letters.forEach((letter, index) => {
-            letter.style.animationDelay = `${index * 0.1}s`;
-        });
-</script>
+<html>
 <head>
-<style>
-.myDiv {
-  border: 5px outset purple;
-  background-color: lightblue;    
-  text-align: center;
-}
-</style>
+  <style>
+    .myDiv {
+      border: 5px outset purple;
+      background-color: lightblue;
+      text-align: center;
+      width: 800px; /* Set the width of the myDiv element */
+      margin: 0 auto; /* Center the myDiv element horizontally */
+    }
+    
+    .title {
+      font-size: 48px; /* Increase the font size of the title */
+    }
+  </style>
 </head>
 <body>
+  <div class="cloud-container">
+    <div class="cloud"></div>
+    <div class="cloud"></div>
+    <div class="cloud"></div>
+    <div class="cloud"></div>
+    <div class="cloud"></div>
+    <div class="cloud"></div>
+  </div>
 
+  
+  
+  <div class="gif-container">
+    
+    <div class="gif-container">
+      <img src="https://cdn.dribbble.com/users/261567/screenshots/1099769/googleweather.gif" alt="GIF Image" class="img-fluid" style="width: 1500px; height: 500px;">
+    </div>
+  </div>
 
-<div class="myDiv">
-  <h2>Welcome to SkySight. With this feature you can find out the weather conditions of any part of the world! Enter either the zip code or the city name and get the data in a blink of an eye. </h2>
-</div>
+  <div class="myDiv">
+    <h2>Welcome to SkySight. With this feature you can find out the weather conditions of any part of the world! Enter either the zip code or the city name and get the data in a blink of an eye.</h2>
+  </div>
 
+  <script>
+    const letters = document.querySelectorAll('.letter');
+
+    letters.forEach((letter, index) => {
+      letter.style.animationDelay = `${index * 0.1}s`;
+    });
+  </script>
 </body>
-</html
+</html>
+
 
 
 
