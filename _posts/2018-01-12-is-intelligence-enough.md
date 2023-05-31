@@ -1,7 +1,7 @@
 ---
 layout: post
 categories: [ Jekyll, tutorial, web development ]
-image: ""
+image: assets/images/2.jpg
 ---
 
 <html>
