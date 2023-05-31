@@ -3,7 +3,7 @@ layout: post
 title:  "External Featured Image"
 author: sal
 categories: [ Jekyll, tutorial, web development ]
-image: "https://media.istockphoto.com/id/1076840920/vector/music-background.jpg?s=612x612&w=0&k=20&c=bMG2SEUYaurIHAjtRbw7bmjLsXyT7iJUvAM5HjL3G3I="
+image: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fdribbble.com%2Fshots%2F12694549-Weather-Animated-Icons&psig=AOvVaw2Og5RN--S-_m-vU8BgPmRh&ust=1685588001479000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCODWn-TGnv8CFQAAAAAdAAAAABAD"
 ---
 
 <!DOCTYPE html>
