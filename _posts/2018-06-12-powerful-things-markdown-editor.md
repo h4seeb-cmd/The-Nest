@@ -6,7 +6,13 @@ categories: [ Jekyll, tutorial ]
 image: assets/images/1.jpg
 ---
 {% assign BITS = 8 %}
-
+<html>
+<head>
+</head>
+<body>
+  <img src="https://j.gifs.com/YE6OJA.gif" alt="Animated GIF">
+</body>
+</html>
 <style>
     td {
         text-align: center;
