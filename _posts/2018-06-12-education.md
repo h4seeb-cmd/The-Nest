@@ -1,51 +1,104 @@
 ---
 layout: post
-title:  "Education must also train one for quick, resolute and effective thinking."
-author: john
 categories: [ Jekyll, tutorial ]
 image: assets/images/3.jpg
-beforetoc: "Markdown editor is a very powerful thing. In this article I'm going to show you what you can actually do with it, some tricks and tips while editing your post."
+
 toc: true
 ---
-There are lots of powerful things you can do with the Markdown editor
+<html>
+<head>
+  <style>
+    body {
+      margin: 0;
+    }
 
-If you've gotten pretty comfortable with writing in Markdown, then you may enjoy some more advanced tips about the types of things you can do with Markdown!
+    .title {
+      position: absolute;
+      top: 50px;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: bounce 2s infinite, colorChange 5s infinite;
+    }
 
-As with the last post about the editor, you'll want to be actually editing this post as you read it so that you can see all the Markdown code we're using.
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-20px);
+      }
+    }
+    
+    @keyframes colorChange {
+      0% {
+        color: red;
+      }
+      25% {
+        color: blue;
+      }
+      50% {
+        color: green;
+      }
+      75% {
+        color: orange;
+      }
+      100% {
+        color: purple;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1 class="title">About Us</h1>
+</body>
+</html>
 
 
-## Special formatting
-
-As well as bold and italics, you can also use some other special formatting in Markdown when the need arises, for example:
-
-+ ~~strike through~~
-+ ==highlight==
-+ \*escaped characters\*
-
-
-## Writing code blocks
-
-There are two types of code elements which can be inserted in Markdown, the first is inline, and the other is block. Inline code is formatted by wrapping any word or words in back-ticks, `like this`. Larger snippets of code can be displayed across multiple lines using triple back ticks:
-
-```
-.my-link {
-    text-decoration: underline;
-}
-```
-
-If you want to get really fancy, you can even add syntax highlighting using Rouge.
-
-
-![walking]({{ site.baseurl }}/assets/images/8.jpg)
-
-## Reference lists
-
-The quick brown jumped over the lazy.
-
-Another way to insert links in markdown is using reference lists. You might want to use this style of linking to cite reference material in a Wikipedia-style. All of the links are listed at the end of the document, so you can maintain full separation between content and its source or reference.
-
-## Full HTML
-
-Perhaps the best part of Markdown is that you're never limited to just Markdown. You can write HTML directly in the Markdown editor and it will just work as HTML usually does. No limits! Here's a standard YouTube embed code as an example:
-
-<p><iframe style="width:100%;" height="315" src="https://www.youtube.com/embed/Cniqsc9QfDo?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe></p>
+<html>
+<head>
+  <style>
+    .frame {
+      display: inline-block;
+      width: 300px;
+      padding: 20px;
+      margin: 10px;
+      background-color: #f5f5f5;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+    
+    .frame img {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 4px solid #fff;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    .frame h2 {
+      margin-top: 10px;
+      font-size: 1.5em;
+      color: #333;
+    }
+    
+    .frame p {
+      margin-top: 5px;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+  <div class="frame">
+    <img src="path_to_image1.jpg" alt="Haseeb Beg">
+    <h2>Haseeb Beg</h2>
+    <p>Hi My name is Haseeb, I am Sophomore at Del Norte. For this project I worked on the binary feature!</p>
+  </div>
+  
+  <div class="frame">
+    <img src="path_to_image2.jpg" alt="Ananya Gaurav">
+    <h2> Ananya Gaurav</h2>
+    <p>Hi My name is Ananya, I am a Sophomore at Del Norte, and for this project I worked on the weather feature</p>
+  </div>
+</body>
+</html>
