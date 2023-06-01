@@ -169,7 +169,7 @@ image: assets/images/2.jpg
   
   <div class="gif-container">
     
-    <div class="gif-container">
+  <div class="gif-container">
       <img src="https://cdn.dribbble.com/users/261567/screenshots/1099769/googleweather.gif" alt="GIF Image" class="img-fluid" style="width: 1500px; height: 500px;">
     </div>
   </div>
