@@ -20,28 +20,7 @@ image: assets/images/1.jpg
     }
 </style>
 
-<table>
-    <thead>
-        <tr class="header" id="table">
-            <th>Plus</th>
-            <th>Binary</th>
-            <th>Octal</th>
-            <th>Hexadecimal</th>
-            <th>Decimal</th>
-            <th>Minus</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><div class="button" id="add1" onclick="add(1)">+1</div></td>
-            <td id="binary">00000000</td>
-            <td id="octal">0</td>
-            <td id="hexadecimal">0</td>
-            <td id="decimal">0</td>
-            <td><div class="button" id="sub1" onclick="add(-1)">-1</div></td>
-        </tr>
-    </tbody>
-</table>
+<br>
 
 {% comment %}
 Liquid for loop includes last number, thus the Minus

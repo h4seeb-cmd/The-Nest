@@ -150,9 +150,7 @@ image: assets/images/2.jpg
       margin: 0 auto; /* Center the myDiv element horizontally */
     }
     
-    .title {
-      font-size: 48px; /* Increase the font size of the title */
-    }
+
   </style>
 </head>
 <body>
@@ -279,6 +277,7 @@ image: assets/images/2.jpg
         <button type="submit" class="btn btn-purple">Get Forecast</button>
       </form>
     </div>
+    
 
 <div class="card d-none">
       <div class="card-body">
