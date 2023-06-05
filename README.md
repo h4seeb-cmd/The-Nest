@@ -1,23 +1,84 @@
-# Mediumish - Jekyll Theme
+# THE NEST
+## About our Project!
+Our project is mainly run on another device, a CrowPi, which we have connected to from our backend. Our project involves a binary convertor and a weather analyser which analyzes any city's weather and returns it to you. With the bianry code you can enter any number from the backend which will send that response to the crowpi and print it on the display screen. The weather feature uses an API. The user enters a city name or zipcode of any city/area around the world, after they enter it, it get the data accordingly from the API and sends the response back to the user in the form of a table. 
 
-[Live Demo](https://wowthemesnet.github.io/mediumish-theme-jekyll/) &nbsp; | &nbsp; [Download](https://github.com/wowthemesnet/mediumish-theme-jekyll/archive/master.zip) &nbsp; | &nbsp; [Documentation](https://bootstrapstarter.com/template-mediumish-bootstrap-jekyll/) &nbsp; | &nbsp; [Buy me a coffee](https://www.wowthemes.net/donate/)
+## Here are some other links that will be helpful for you!
+Backend: https://github.com/h4seeb-cmd/CRPiBackend
+Themes: https://jekyllthemes.io/q
+Weather API: https://rapidapi.com/apininjas/api/weather-by-api-ninjas/
+Binary 1: https://github.com/nighthawkcoders/APCSP/blob/master/_posts/2022-11-14-AP-binary_logic.md
+Binary 2: https://github.com/nighthawkcoders/APCSP/blob/master/_posts/2022-07-07-PBL-binary.md
 
-![mediumish](assets/images/mediumish-jekyll-template.png)
+
+## About Us!
+
+Our teams consists of two sophomores from Del Norte High School.
+Meet the team: Haseeb Beg and Ananya Gaurav. 
+The main reason we wanted to do this project was because we wanted to challenge ourseleves with something new. Working with a CrowPi was defienlty a challenge but it did teach us many things and it was really fun seeing the CrowPi get the data from the backend and display it on the screen. The binary convertor is Haseeb's feature while the weather feature is Ananya's. 
+
+# How to use the project.
+You can use this project any way you want! Somethings to do with this is maybe adding more to the weather api. The api also works with country and state names, so you could integrate that into the code and make the output a little different, maybe it could read out the data from the CrowPi? For the binary code maybe change or add a little more to the code so it lights bulbs on the CrowPi.
 
 
-### Copyright
 
-Copyright (C) 2019 Sal, https://www.wowthemes.net
+## Usage
+Follow these steps to get this repository!
 
-**Mediumish for Jekyll** is designed and developed by [Sal](https://www.wowthemes.net) and it is *free* under MIT license. 
+1. Midnight Theme. Use the GitHub Pages [Midnight Theme](https://github.com/pages-themes/midnight/blob/master/README.md) as a resource.  This project started with customization of _layouts/default.html from the Midnight Theme.  If you wanted to use a different [GitHub Pages Themes](https://pages.github.com/themes/), you would similarly change `_layouts/default.html` from repo used to support that theme.  Observe comment at top of _layouts/default.html ...
 
-<a href="https://www.wowthemes.net/donate/" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: auto !important;width: auto !important;" ></a>
+```html
+<!-- 
+  _layouts/default.html
+  customization to original Midnight theme 
+  found through GitHub Pages Themes
+ -->
+```
 
-### Contribute
+2. Preview Site (Option A) - [Testing your GitHub Pages site locally with Jekyll](https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/testing-your-github-pages-site-locally-with-jekyll).  This instruction provides instructions for ruby `Gemfile`,`bundle install`.  As an addition add `.gitignore` to avoid seeing build files in commit.   After pre-requisites run this command to obtain prompt for web server ...
 
-1. [Fork the repo](https://github.com/wowthemesnet/mediumish-theme-jekyll).
-2. Clone a copy of your fork on your local
-3. Create a branch off of master and give it a meaningful name (e.g. my-new-mediumish-feature).
-4. Make necessary changes, commit, push and open a pull request on GitHub.
+```bash
+bundle exec jekyll serve -H 0.0.0.0 -P 4001 # -H and -P are optional
+```
+3. Install Nix and run using a Nix shell (Option B).  This should be quicker than Docker and more reliable than previous.
 
-Thank you!
+```bash
+sh <(curl -L https://nixos.org/nix/install) # installs nix requires root password
+
+# restart terminal as shell is updated, then cd ~/vscode/project-dir assuming you have it cloned
+
+nix-shell # start shell, aka nix os virtual environment
+code . # activate VSCode in current directory
+
+# open vscode terminal
+
+bundle install # only need to run once, first time. If this command doesn't work, delete your github repo, and reclone it. 
+
+bundle exec jekyll serve # run server
+
+bundle exec jekyll serve --livereload --force_polling # if you are on WSL/windows and the above command doesn't work, try this.
+
+```
+
+4. Preview Site (Option C) - [GitHub Pages Ruby Gem](https://github.com/github/pages-gem) has additional information on making a local server.  Ruby requirements are the same: `Gemfile`,`bundle install`.   This README looks like basis of FastPages `make server` as it uses Docker and shows how to setup a `Makefile`.
+
+5. Customizing style (CSS).  This project uses `/assets/css/style.scss` as the location to customize your CSS. To avoid warnings in VSCode make sure you install `SCSS IntelliSense` plugin.  To understand default style, make sure you ***Preview Site*** and refer to build generated `_site/assets/css/style.css` (this is worth 1000 lectures).  For the reunion site `gallery.md` uses custom style from `assets/css/style.css` to support 3 images per row.  Observe file and position of import and custom CSS, order is important as clarified in Midnight Theme readme. ...
+
+```css
+---
+---
+
+@import "{{ site.theme }}";
+
+/* "row style" is flexible size and aligns pictures in center */
+.row {
+    align-items: center;
+    display: flex;
+  }
+  
+  /* "column style" is one-third of the width with padding */
+  .column {
+    flex: 33.33%;
+    padding: 5px;
+  }
+```
+
