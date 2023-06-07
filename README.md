@@ -1,7 +1,13 @@
 # THE NEST
 > Frontend Repository! Includes cool animations and very cool features like weather analyzer and binary convertor!
 ## About our Project!
-Our project is mainly run on another device, a CrowPi, which we have connected to from our backend. Our project involves a binary convertor and a weather analyser which analyzes any city's weather and returns it to you. With the bianry code you can enter any number from the backend which will send that response to the crowpi and print it on the display screen. The weather feature uses an API. The user enters a city name or zipcode of any city/area around the world, after they enter it, it get the data accordingly from the API and sends the response back to the user in the form of a table. 
+Our project is mainly run on another device, a CrowPi, which we have connected to from our backend. Our project involves a binary convertor and a weather analyser which analyzes any city's weather and returns it to you. With the bianry code you can enter any number from the backend which will send that response to the crowpi and print it on the display screen. The weather feature uses an API. The user enters a city name or zipcode of any city/area around the world, after they enter it, it get the data accordingly from the API and sends the response back to the user in the form of a table. The location name is sent to the CrowPi and displayed on the LCD.
+
+
+## About Us!
+Our teams consists of two sophomores from Del Norte High School.
+Meet the team: Haseeb Beg and Ananya Gaurav. 
+The main reason we wanted to do this project was because we wanted to challenge ourseleves with something new. Working with a CrowPi was defienlty a challenge but it did teach us many things and it was really fun seeing the CrowPi get the data from the backend and display it on the screen. The binary convertor is Haseeb's feature while the weather feature is Ananya's. 
 
 ## What inspired us?
 ### Haseeb:
@@ -18,12 +24,6 @@ Weather API: https://rapidapi.com/apininjas/api/weather-by-api-ninjas/
 Binary 1: https://github.com/nighthawkcoders/APCSP/blob/master/_posts/2022-11-14-AP-binary_logic.md
 Binary 2: https://github.com/nighthawkcoders/APCSP/blob/master/_posts/2022-07-07-PBL-binary.md
 
-
-## About Us!
-
-Our teams consists of two sophomores from Del Norte High School.
-Meet the team: Haseeb Beg and Ananya Gaurav. 
-The main reason we wanted to do this project was because we wanted to challenge ourseleves with something new. Working with a CrowPi was defienlty a challenge but it did teach us many things and it was really fun seeing the CrowPi get the data from the backend and display it on the screen. The binary convertor is Haseeb's feature while the weather feature is Ananya's. 
 
 # How to use the project.
 You can use this project any way you want! Somethings to do with this is maybe adding more to the weather api. The api also works with country and state names, so you could integrate that into the code and make the output a little different, maybe it could read out the data from the CrowPi? For the binary code maybe change or add a little more to the code so it lights bulbs on the CrowPi.
